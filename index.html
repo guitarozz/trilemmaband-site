@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TriLemma | Musical Experience</title>
+  <meta
+    name="description"
+    content="Official website for TriLemma, a dynamic musical group. Check upcoming shows, listen, and book live music."
+  />
+  <meta name="theme-color" content="#0f172a" />
+  <meta property="og:title" content="TriLemma | Musical Experience" />
+  <meta
+    property="og:description"
+    content="Official website for TriLemma. Check upcoming shows, watch videos, and book live music."
+  />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="images/group2.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="TriLemma | Musical Experience" />
+  <meta
+    name="twitter:description"
+    content="Official website for TriLemma. Check upcoming shows, watch videos, and book live music."
+  />
+  <meta name="twitter:image" content="images/group2.png" />
+  <link rel="canonical" href="https://trilemmamusic.com/" />
+  <link rel="icon" type="image/png" href="images/group2.png" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#home">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="#home">TriLemma</a>
+      <nav aria-label="Primary">
+        <ul class="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#shows">Shows</a></li>
+          <li><a href="#music">Music</a></li>
+          <li><a href="#media">Releases</a></li>
+          <li><a href="#socials">Socials</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="home">
+    <section class="hero">
+      <div class="container">
+        <div class="hero-layout">
+          <div class="hero-image-wrap">
+            <img src="images/group2.png" alt="TriLemma performing live" class="hero-image" />
+          </div>
+          <div class="hero-content">
+            <p class="eyebrow">Live Music</p>
+            <h1>TriLemma</h1>
+            <p class="hero-text">
+              We are TriLemma, a band rooted in rock and blues with a wide-ranging repertoire that will get you dancing and singing along.
+            </p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#shows">See Upcoming Shows</a>
+              <a class="btn btn-secondary" href="#contact">Book TriLemma</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <div class="container">
+        <h2>About</h2>
+        <p>
+          TriLemma is a musical experience. We are a dynamic group of musicians who blend classic and modern tunes to create an unforgettable live show. Our performances include Classic Rock, Blues, 80s, 90s, Soul, and original tunes.
+        </p>
+        <p>
+          We are based in Saint Joseph, Missouri, and perform regularly at local venues and events. Whether you're looking for a night of dancing or just want to enjoy great music, TriLemma has something for everyone.
+        </p>
+      </div>
+    </section>
+
+    <section id="shows" class="section alt">
+      <div class="container">
+        <h2>Upcoming Shows</h2>
+        <p class="section-intro">Catch us live around town:</p>
+
+        <!-- JS will inject show cards into this container -->
+        <div id="show-list" class="show-grid"></div>
+      </div>
+    </section>
+
+    <section id="music" class="section">
+      <div class="container">
+        <h2>Music</h2>
+        <p class="section-intro">Start here for featured tracks and full projects.</p>
+
+        <div class="show-grid">
+          <article class="show-card">
+            <h3>TriLemma</h3>
+            <p class="show-meta">For full-band sets and expanded material, check out TriLemma releases and live sessions.</p>
+            <ul class="media-links">
+              <li><a href="https://www.youtube.com/@TriLemmaMusic" target="_blank" rel="noopener noreferrer">TriLemma YouTube</a></li>
+</ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+
+    <section id="media" class="section alt">
+      <div class="container">
+        <h2>Releases (Coming Soon!)</h2>
+        <p class="section-intro">We are working on new releases and will share them here soon. Stay tuned for updates!</p>
+      </div>
+    </section>
+
+    <section id="socials" class="section">
+      <div class="container">
+        <h2>Socials</h2>
+        <p>
+          Find us on these social media outlets!
+        </p>
+        <div class="show-grid">
+          <ul class="media-links">
+            <li><a href="https://www.facebook.com/profile.php?id=61567551685577" target="_blank" rel="noopener noreferrer">TriLemma Facebook</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section alt">
+      <div class="container narrow">
+        <h2>Contact & Booking</h2>
+        <p>
+          For venue bookings, private events, or collaborations, email us at
+          <a href="mailto:josborn777@gmail.com">josborn777@gmail.com</a>.
+        </p>
+        <p class="section-intro">Helpful details for booking inquiries:</p>
+        <ul class="link-list booking-list">
+          <li>Set lengths: Flexible (single set, multi-set, or event-specific)</li>
+          <li>Coverage area: Saint Joseph and surrounding regions</li>
+          <li>Typical response time: Within 24–48 hours</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-wrap">
+      <p>&copy; <span id="year"></span> TriLemma Music</p>
+      <p>Built with HTML, CSS, and JavaScript</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
