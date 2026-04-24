@@ -1,4 +1,10 @@
-const showsPath = "shows.json";
+import {
+  fetchJson,
+  MESSAGES,
+  mountSiteChrome,
+  PATHS,
+  setFooterYear,
+} from "./shared.js";
 
 // Find the container in HTML where show cards should go
 const showListElement = document.getElementById("show-list");
@@ -73,28 +79,20 @@ async function loadShows() {
   if (!showListElement) return;
 
   try {
-    const response = await fetch(showsPath, { cache: "no-store" });
-    if (!response.ok) {
-      throw new Error(`Failed to load shows (${response.status})`);
-    }
-
-    const shows = await response.json();
+    const shows = await fetchJson(PATHS.shows, "shows");
     if (!Array.isArray(shows) || shows.length === 0) {
-      renderShowMessage("Shows will be announced soon. Check back shortly.");
+      renderShowMessage(MESSAGES.showsEmpty);
       return;
     }
 
     renderShows(shows);
   } catch (error) {
     console.error(error);
-    renderShowMessage("Could not load shows. If you're previewing locally, run a local server (not file://).");
+    renderShowMessage(MESSAGES.showsLoadError);
   }
 }
 
-// Set footer year automatically
-const yearElement = document.getElementById("year");
-if (yearElement) {
-  yearElement.textContent = new Date().getFullYear();
-}
+mountSiteChrome({ page: "home", showBuiltWith: true });
+setFooterYear();
 
 loadShows();

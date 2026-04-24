@@ -22,5 +22,13 @@
     "time": "7:00 PM",
     "location": "Riverfront Park, Atchison, KS",
     "link": "https://www.visitatchison.com/aefestival"
+  },
+  {
+    "venue": "Moila Golf Course Family Fun Night!",
+    "format": "TriLemma",
+    "date": "July 25th, 2026",
+    "time": "6:00 PM",
+    "location": "701 N Noyes Blvd, St Joseph, MO 64506",
+    "link": null
   }
 ]

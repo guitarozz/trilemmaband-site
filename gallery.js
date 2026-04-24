@@ -1,25 +1,185 @@
-const manifestPath = "images/gallery-manifest.json";
+import {
+  fetchJson,
+  MESSAGES,
+  mountSiteChrome,
+  PATHS,
+  setFooterYear,
+} from "./shared.js";
+
 const galleryGrid = document.getElementById("gallery-grid");
-let lightboxOverlay = null;
-let lightboxImage = null;
-let lightboxCount = null;
-let lightboxCloseButton = null;
-let lightboxPrevButton = null;
-let lightboxNextButton = null;
-let lightboxItems = [];
-let lightboxIndex = 0;
-let lastFocusedElement = null;
 
 function getManifestFromWindow() {
   const items = window.GALLERY_MANIFEST?.images;
   return Array.isArray(items) ? items : [];
 }
 
-function setFooterYear() {
-  const yearElement = document.getElementById("year");
-  if (yearElement) {
-    yearElement.textContent = new Date().getFullYear();
+class Lightbox {
+  constructor() {
+    this.overlay = null;
+    this.image = null;
+    this.caption = null;
+    this.closeButton = null;
+    this.prevButton = null;
+    this.nextButton = null;
+    this.items = [];
+    this.index = 0;
+    this.lastFocusedElement = null;
+
+    this.handleKeydown = this.handleKeydown.bind(this);
+    this.close = this.close.bind(this);
   }
+
+  ensure() {
+    if (this.overlay) return;
+
+    this.overlay = document.createElement("div");
+    this.overlay.className = "lightbox-overlay";
+    this.overlay.hidden = true;
+    this.overlay.innerHTML = `
+      <div class="lightbox-dialog" role="dialog" aria-modal="true" aria-label="Image viewer">
+        <button class="lightbox-close" type="button" aria-label="Close image popup">✕</button>
+        <img class="lightbox-image" alt="" />
+        <div class="lightbox-footer">
+          <button class="lightbox-nav" type="button" data-dir="prev" aria-label="Previous image">← Prev</button>
+          <p class="lightbox-caption" aria-live="polite"></p>
+          <button class="lightbox-nav" type="button" data-dir="next" aria-label="Next image">Next →</button>
+        </div>
+      </div>
+    `;
+
+    document.body.appendChild(this.overlay);
+    this.image = this.overlay.querySelector(".lightbox-image");
+    this.caption = this.overlay.querySelector(".lightbox-caption");
+    this.prevButton = this.overlay.querySelector('[data-dir="prev"]');
+    this.nextButton = this.overlay.querySelector('[data-dir="next"]');
+    this.closeButton = this.overlay.querySelector(".lightbox-close");
+
+    this.closeButton?.addEventListener("click", this.close);
+    this.prevButton?.addEventListener("click", () => this.step(-1));
+    this.nextButton?.addEventListener("click", () => this.step(1));
+
+    this.overlay.addEventListener("click", (event) => {
+      if (event.target === this.overlay) {
+        this.close();
+      }
+    });
+  }
+
+  getFocusableElements() {
+    if (!this.overlay) return [];
+    return Array.from(
+      this.overlay.querySelectorAll(
+        'button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
+      )
+    );
+  }
+
+  handleKeydown(event) {
+    if (!this.overlay || this.overlay.hidden) return;
+
+    if (event.key === "Escape") {
+      event.preventDefault();
+      this.close();
+      return;
+    }
+
+    if (event.key === "ArrowLeft") {
+      event.preventDefault();
+      this.step(-1);
+      return;
+    }
+
+    if (event.key === "ArrowRight") {
+      event.preventDefault();
+      this.step(1);
+      return;
+    }
+
+    if (event.key === "Tab") {
+      const focusable = this.getFocusableElements();
+      if (focusable.length === 0) {
+        event.preventDefault();
+        return;
+      }
+
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    }
+  }
+
+  update() {
+    const item = this.items[this.index];
+    if (!item || !this.image || !this.caption) return;
+
+    this.image.src = item.src;
+    this.image.alt = item.alt || "TriLemma photo";
+    this.caption.textContent = `${this.index + 1} / ${this.items.length}`;
+
+    if (this.prevButton) this.prevButton.disabled = this.index === 0;
+    if (this.nextButton) this.nextButton.disabled = this.index === this.items.length - 1;
+  }
+
+  open(items, index) {
+    this.ensure();
+    this.items = items;
+    this.index = index;
+    this.lastFocusedElement = document.activeElement;
+
+    this.update();
+    this.overlay.hidden = false;
+    document.body.style.overflow = "hidden";
+    document.addEventListener("keydown", this.handleKeydown);
+    this.closeButton?.focus();
+  }
+
+  close() {
+    if (!this.overlay) return;
+    this.overlay.hidden = true;
+    document.body.style.overflow = "";
+    document.removeEventListener("keydown", this.handleKeydown);
+
+    if (this.lastFocusedElement && typeof this.lastFocusedElement.focus === "function") {
+      this.lastFocusedElement.focus();
+    }
+  }
+
+  step(delta) {
+    const nextIndex = this.index + delta;
+    if (nextIndex < 0 || nextIndex >= this.items.length) return;
+    this.index = nextIndex;
+    this.update();
+  }
+}
+
+const lightbox = new Lightbox();
+
+function sortItemsByOrientation(items) {
+  const orientationRank = {
+    portrait: 0,
+    landscape: 1,
+    square: 2,
+    unknown: 3,
+  };
+
+  return items
+    .map((item, index) => ({
+      ...item,
+      orientation: item.orientation || "unknown",
+      _index: index,
+    }))
+    .sort((a, b) => {
+      const rankDiff = orientationRank[a.orientation] - orientationRank[b.orientation];
+      if (rankDiff !== 0) return rankDiff;
+      return a._index - b._index;
+    });
 }
 
 function createGalleryCard(item, index, items) {
@@ -34,7 +194,7 @@ function createGalleryCard(item, index, items) {
   imageLink.setAttribute("aria-label", `Open image popup: ${item.alt || "TriLemma photo"}`);
   imageLink.addEventListener("click", (event) => {
     event.preventDefault();
-    openLightbox(items, index);
+    lightbox.open(items, index);
   });
 
   const image = document.createElement("img");
@@ -48,182 +208,15 @@ function createGalleryCard(item, index, items) {
   return card;
 }
 
-
-function ensureLightbox() {
-  if (lightboxOverlay) return;
-
-  lightboxOverlay = document.createElement("div");
-  lightboxOverlay.className = "lightbox-overlay";
-  lightboxOverlay.hidden = true;
-  lightboxOverlay.innerHTML = `
-    <div class="lightbox-dialog" role="dialog" aria-modal="true" aria-label="Image viewer">
-      <button class="lightbox-close" type="button" aria-label="Close image popup">✕</button>
-      <img class="lightbox-image" alt="" />
-      <div class="lightbox-footer">
-        <button class="lightbox-nav" type="button" data-dir="prev" aria-label="Previous image">← Prev</button>
-        <p class="lightbox-caption" aria-live="polite"></p>
-        <button class="lightbox-nav" type="button" data-dir="next" aria-label="Next image">Next →</button>
-      </div>
-    </div>
-  `;
-
-  document.body.appendChild(lightboxOverlay);
-  lightboxImage = lightboxOverlay.querySelector(".lightbox-image");
-  lightboxCount = lightboxOverlay.querySelector(".lightbox-caption");
-  lightboxPrevButton = lightboxOverlay.querySelector('[data-dir="prev"]');
-  lightboxNextButton = lightboxOverlay.querySelector('[data-dir="next"]');
-  lightboxCloseButton = lightboxOverlay.querySelector(".lightbox-close");
-
-  lightboxCloseButton.addEventListener("click", closeLightbox);
-  lightboxPrevButton.addEventListener("click", () => stepLightbox(-1));
-  lightboxNextButton.addEventListener("click", () => stepLightbox(1));
-
-  lightboxOverlay.addEventListener("click", (event) => {
-    if (event.target === lightboxOverlay) {
-      closeLightbox();
-    }
-  });
-
-}
-
-function getFocusableElementsInLightbox() {
-  if (!lightboxOverlay) return [];
-  return Array.from(
-    lightboxOverlay.querySelectorAll(
-      'button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
-    )
-  );
-}
-
-function handleLightboxKeydown(event) {
-  if (!lightboxOverlay || lightboxOverlay.hidden) return;
-
-  if (event.key === "Escape") {
-    event.preventDefault();
-    closeLightbox();
-    return;
-  }
-
-  if (event.key === "ArrowLeft") {
-    event.preventDefault();
-    stepLightbox(-1);
-    return;
-  }
-
-  if (event.key === "ArrowRight") {
-    event.preventDefault();
-    stepLightbox(1);
-    return;
-  }
-
-  if (event.key === "Tab") {
-    const focusable = getFocusableElementsInLightbox();
-    if (focusable.length === 0) {
-      event.preventDefault();
-      return;
-    }
-
-    const first = focusable[0];
-    const last = focusable[focusable.length - 1];
-
-    if (event.shiftKey && document.activeElement === first) {
-      event.preventDefault();
-      last.focus();
-    } else if (!event.shiftKey && document.activeElement === last) {
-      event.preventDefault();
-      first.focus();
-    }
-  }
-}
-
-function updateLightbox() {
-  const item = lightboxItems[lightboxIndex];
-  if (!item || !lightboxImage || !lightboxCount) return;
-
-  lightboxImage.src = item.src;
-  lightboxImage.alt = item.alt || "TriLemma photo";
-  lightboxCount.textContent = `${lightboxIndex + 1} / ${lightboxItems.length}`;
-
-  if (lightboxPrevButton) lightboxPrevButton.disabled = lightboxIndex === 0;
-  if (lightboxNextButton) lightboxNextButton.disabled = lightboxIndex === lightboxItems.length - 1;
-}
-
-function openLightbox(items, index) {
-  ensureLightbox();
-  lightboxItems = items;
-  lightboxIndex = index;
-  lastFocusedElement = document.activeElement;
-  updateLightbox();
-  lightboxOverlay.hidden = false;
-  document.body.style.overflow = "hidden";
-  document.addEventListener("keydown", handleLightboxKeydown);
-  lightboxCloseButton?.focus();
-}
-
-function closeLightbox() {
-  if (!lightboxOverlay) return;
-  lightboxOverlay.hidden = true;
-  document.body.style.overflow = "";
-  document.removeEventListener("keydown", handleLightboxKeydown);
-  if (lastFocusedElement && typeof lastFocusedElement.focus === "function") {
-    lastFocusedElement.focus();
-  }
-}
-
-function stepLightbox(step) {
-  const nextIndex = lightboxIndex + step;
-  if (nextIndex < 0 || nextIndex >= lightboxItems.length) return;
-  lightboxIndex = nextIndex;
-  updateLightbox();
-}
-
-function detectOrientation(src) {
-  return new Promise((resolve) => {
-    const probe = new Image();
-    probe.onload = () => {
-      if (probe.naturalHeight > probe.naturalWidth) {
-        resolve("portrait");
-      } else if (probe.naturalWidth > probe.naturalHeight) {
-        resolve("landscape");
-      } else {
-        resolve("square");
-      }
-    };
-    probe.onerror = () => resolve("unknown");
-    probe.src = src;
-  });
-}
-
-async function sortItemsByOrientation(items) {
-  const orientationRank = {
-    portrait: 0,
-    landscape: 1,
-    square: 2,
-    unknown: 3,
-  };
-
-  const enriched = await Promise.all(
-    items.map(async (item, index) => ({
-      ...item,
-      orientation: await detectOrientation(item.src),
-      _index: index,
-    }))
-  );
-
-  enriched.sort((a, b) => {
-    const rankDiff = orientationRank[a.orientation] - orientationRank[b.orientation];
-    if (rankDiff !== 0) return rankDiff;
-    return a._index - b._index;
-  });
-
-  return enriched;
-}
-
-async function renderGalleryItems(items) {
+function renderGalleryItems(items) {
   if (!galleryGrid) return;
-  const sortedItems = await sortItemsByOrientation(items);
+
+  const sortedItems = sortItemsByOrientation(items);
   const fragment = document.createDocumentFragment();
-  sortedItems.forEach((item, index) => fragment.appendChild(createGalleryCard(item, index, sortedItems)));
+  sortedItems.forEach((item, index) => {
+    fragment.appendChild(createGalleryCard(item, index, sortedItems));
+  });
+
   galleryGrid.innerHTML = "";
   galleryGrid.appendChild(fragment);
 }
@@ -242,30 +235,26 @@ async function loadGallery() {
 
   const localItems = getManifestFromWindow();
   if (localItems.length > 0) {
-    await renderGalleryItems(localItems);
+    renderGalleryItems(localItems);
     return;
   }
 
   try {
-    const response = await fetch(manifestPath, { cache: "no-store" });
-    if (!response.ok) {
-      throw new Error(`Failed to load manifest (${response.status})`);
-    }
-
-    const data = await response.json();
+    const data = await fetchJson(PATHS.galleryManifest, "manifest");
     const items = Array.isArray(data?.images) ? data.images : [];
 
     if (items.length === 0) {
-      renderMessage("No gallery images yet. Add files and regenerate the manifest.");
+      renderMessage(MESSAGES.galleryEmpty);
       return;
     }
 
-    await renderGalleryItems(items);
+    renderGalleryItems(items);
   } catch (error) {
     console.error(error);
-    renderMessage("Could not load gallery images right now. Run sh generate-gallery-manifest.sh and reload.");
+    renderMessage(MESSAGES.galleryLoadError);
   }
 }
 
+mountSiteChrome({ page: "gallery" });
 setFooterYear();
 loadGallery();

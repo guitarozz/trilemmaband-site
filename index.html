@@ -30,21 +30,7 @@
 <body>
   <a class="skip-link" href="#home">Skip to main content</a>
 
-  <header class="site-header">
-    <div class="container nav-wrap">
-      <a class="brand" href="#home">TriLemma</a>
-      <nav aria-label="Primary">
-        <ul class="nav-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="index.html#shows">Shows</a></li>
-          <li><a href="index.html#music">Music</a></li>
-          <li><a href="index.html#socials">Socials</a></li>
-          <li><a href="index.html#contact">Contact</a></li>
-          <li><a href="gallery.html">Gallery</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+  <header id="site-header" class="site-header"></header>
 
   <main id="home">
     <section class="hero">
@@ -71,14 +57,24 @@
     <section id="about" class="section">
       <div class="container">
         <h2>About</h2>
+        <p class="band-intro">TriLemma is:</p>
+        <ul class="band-list" aria-label="Band members">
+          <li class="band-member"><strong>Brandon O'Brien</strong>: Piano, Keys, Synths and Vocals</li>
+          <li class="band-member"><strong>Jason Osborn</strong>: Guitar and Vocals</li>
+          <li class="band-member"><strong>Adam Park</strong>: Drums and Vocals</li>
+        </ul>
         <p>
-          TriLemma isn’t just a band; it’s an energy shift. What began as the Jason and Brandon Duo, a collaboration formed in the quiet of 2020 that evolved into a powerhouse trio with the addition of Adam Park. Our sound is a seamless blend of original tracks and a massive range of covers, from the soulful grit of the Red Clay Strays to the floor-shaking energy of Nelly.
-
-We play with the crowd, not at them, ensuring that every show is a shared, infectious experience that pulls everyone in. Currently, we are writing new music and lyrics that capture the energy and spirit of the world as we experience it. We plan to head into the studio in 2026 to capture this new work and share it with the world.
+          TriLemma started as the Jason & Brandon Duo in 2021 and evolved into a hard hitting trio with the addition of drummer Adam Park. 
+          Today, the band blends original music with a wide-ranging set of covers—from the soulful grit of The Red Clay Strays to the 
+          high-energy hits of Nelly—all delivered with a focus on connection, not just performance.
+          We don’t play at the crowd—we play with them. Every show is built to pull people in, whether that means a packed dance floor or 
+          a room locked into the moment.
+          TriLemma is currently writing new original music, with plans to enter the studio in 2026.
         </p>
         <p>
           We are based in Saint Joseph, Missouri, and perform regularly at local venues and events. Whether you're looking for a night of dancing or just want to enjoy great music, TriLemma has something for everyone.
         </p>
+
       </div>
     </section>
 
@@ -148,13 +144,8 @@ We play with the crowd, not at them, ensuring that every show is a shared, infec
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="container footer-wrap">
-      <p>&copy; <span id="year"></span> TriLemma Music</p>
-      <p>Built with HTML, CSS, and JavaScript</p>
-    </div>
-  </footer>
+  <footer id="site-footer" class="site-footer"></footer>
 
-  <script src="script.js"></script>
+  <script type="module" src="script.js"></script>
 </body>
 </html>
