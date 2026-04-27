@@ -12,11 +12,12 @@ const showListElement = document.getElementById("show-list");
 function createMetaRow(label, value) {
   const row = document.createElement("p");
   row.className = "show-meta";
-
-  const strong = document.createElement("strong");
-  strong.textContent = `${label}: `;
-
-  row.appendChild(strong);
+  
+  if (label){
+    const strong = document.createElement("strong");
+    strong.textContent = `${label}: `;
+    row.appendChild(strong);
+  }
   row.append(value);
 
   return row;
@@ -24,9 +25,7 @@ function createMetaRow(label, value) {
 
 function createShowCard(show) {
   const venue = show.venue || "Venue TBA";
-  const format = show.format || "Format TBA";
   const date = show.date || "Date TBA";
-  const time = show.time || "Time TBA";
   const location = show.location || "Location TBA";
 
   const card = document.createElement("article");
@@ -36,10 +35,11 @@ function createShowCard(show) {
   title.textContent = venue;
   card.appendChild(title);
 
-  card.appendChild(createMetaRow("Format", format));
-  card.appendChild(createMetaRow("Date", date));
-  card.appendChild(createMetaRow("Time", time));
-  card.appendChild(createMetaRow("Location", location));
+  card.appendChild(createMetaRow(null, date));
+  card.appendChild(createMetaRow(null, location));
+  if (show.format) {
+    card.appendChild(createMetaRow("Notes", show.format));
+  }
 
   if (show.link) {
     const linkRow = document.createElement("p");
