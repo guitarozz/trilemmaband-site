@@ -325,6 +325,7 @@ h1 {
   display: flex;
   flex-direction: column;
   gap: 0.6rem;
+  overflow: auto;
 }
 
 .lightbox-close {
@@ -460,6 +461,10 @@ h1 {
   .lightbox-footer {
     grid-template-columns: 1fr;
     justify-items: stretch;
+  }
+
+  .lightbox-image {
+    max-height: 52vh;
   }
 
   .lightbox-nav {
