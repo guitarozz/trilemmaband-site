@@ -36,10 +36,13 @@ function openSongSuggestionModal() {
   if (songTitleInput instanceof HTMLInputElement) songTitleInput.focus();
 }
 
-function closeSongSuggestionModal() {
+function closeSongSuggestionModal({ clearForm = true } = {}) {
   if (!songSuggestionModal) return;
   clearCloseTimer();
   songSuggestionModal.hidden = true;
+  if (clearForm && songSuggestionForm) {
+    songSuggestionForm.reset();
+  }
   document.body.classList.remove("modal-open");
   setSongSuggestionStatus("");
   if (lastFocusedElement instanceof HTMLElement) {
@@ -141,8 +144,8 @@ async function submitSongSuggestion(event) {
     songSuggestionForm.reset();
     setSongSuggestionStatus("Thanks! Your song suggestion has been sent.", "success");
     songSuggestionCloseTimer = window.setTimeout(() => {
-      closeSongSuggestionModal();
-    }, 3000);
+      closeSongSuggestionModal({ clearForm: false });
+    }, 4500);
   } catch (error) {
     console.error("Song suggestion submit failed", error);
     setSongSuggestionStatus("Sorry, we couldn't send that right now. Please try again.", "error");
@@ -158,12 +161,6 @@ export function initSongSuggestions() {
 
   suggestSongOpen.addEventListener("click", openSongSuggestionModal);
   suggestSongClose.addEventListener("click", closeSongSuggestionModal);
-
-  songSuggestionModal.addEventListener("click", (event) => {
-    if (event.target === songSuggestionModal) {
-      closeSongSuggestionModal();
-    }
-  });
 
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape" && !songSuggestionModal.hidden) {
