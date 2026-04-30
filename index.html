@@ -1,151 +1,233 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TriLemma! A Musical Experience</title>
-  <meta
-    name="description"
-    content="Official website for TriLemma, a dynamic musical group. Check upcoming shows, listen, and book live music."
-  />
-  <meta name="theme-color" content="#0f172a" />
-  <meta property="og:title" content="TriLemma! A Musical Experience" />
-  <meta
-    property="og:description"
-    content="Official website for TriLemma. Check upcoming shows, watch videos, and book live music."
-  />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="cover1.png" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="TriLemma! A Musical Experience" />
-  <meta
-    name="twitter:description"
-    content="Official website for TriLemma. Check upcoming shows, watch videos, and book live music."
-  />
-  <meta name="twitter:image" content="cover1.png" />
-  <link rel="canonical" href="https://www.trilemma.band/" />
-  <link rel="icon" type="image/jpeg" href="cover1.png" />
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
-  <a class="skip-link" href="#home">Skip to main content</a>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TriLemma! A Musical Experience</title>
+    <meta
+      name="description"
+      content="Official website for TriLemma, a dynamic musical group. Check upcoming shows, listen, and book live music."
+    />
+    <meta name="theme-color" content="#0f172a" />
+    <meta property="og:title" content="TriLemma! A Musical Experience" />
+    <meta
+      property="og:description"
+      content="Official website for TriLemma. Check upcoming shows, watch videos, and book live music."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="cover1.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="TriLemma! A Musical Experience" />
+    <meta
+      name="twitter:description"
+      content="Official website for TriLemma. Check upcoming shows, watch videos, and book live music."
+    />
+    <meta name="twitter:image" content="cover1.png" />
+    <link rel="canonical" href="https://www.trilemma.band/" />
+    <link rel="icon" type="image/jpeg" href="cover1.png" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#home">Skip to main content</a>
 
-  <header id="site-header" class="site-header"></header>
+    <header id="site-header" class="site-header"></header>
 
-  <main id="home">
-    <section class="hero">
-      <div class="container">
-        <div class="hero-layout">
-          <div class="hero-image-wrap">
-            <img src="cover1.png" alt="TriLemma performing live" class="hero-image" />
-          </div>
-          <div class="hero-content">
-            <p class="eyebrow">Live rock, blues, soul and crowd-driven energy</p>
-            <h1>TriLemma</h1>
-            <p class="hero-text">
-              We are TriLemma, a band rooted in rock and blues with a wide-ranging repertoire that will get you dancing and singing along.
-            </p>
-            <div class="hero-actions">
-              <a class="btn btn-primary" href="#shows">See Upcoming Shows</a>
-              <a class="btn btn-secondary" href="#contact">Book TriLemma</a>
+    <main id="home">
+      <section class="hero">
+        <div class="container">
+          <div class="hero-layout">
+            <div class="hero-image-wrap">
+              <img src="cover1.png" alt="TriLemma performing live" class="hero-image" />
+            </div>
+            <div class="hero-content">
+              <p class="eyebrow">Live rock, blues, soul and crowd-driven energy</p>
+              <h1>TriLemma</h1>
+              <p class="hero-text">
+                We are TriLemma, a band rooted in rock and blues with a wide-ranging repertoire that
+                will get you dancing and singing along.
+              </p>
+              <div class="hero-actions">
+                <a class="btn btn-primary" href="#shows">See Upcoming Shows</a>
+                <a class="btn btn-secondary" href="#contact">Book TriLemma</a>
+                <button
+                  id="suggest-song-open"
+                  class="btn btn-secondary"
+                  type="button"
+                  aria-haspopup="dialog"
+                  aria-controls="song-suggestion-modal"
+                >
+                  Suggest a Song
+                </button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section id="about" class="section">
-      <div class="container">
-        <h2>About</h2>
-        <p class="band-intro">TriLemma is:</p>
-        <ul class="band-list" aria-label="Band members">
-          <li class="band-member"><strong>Brandon O'Brien</strong>: Piano, Keys, Synths and Vocals</li>
-          <li class="band-member"><strong>Jason Osborn</strong>: Guitar and Vocals</li>
-          <li class="band-member"><strong>Adam Park</strong>: Drums and Vocals</li>
-        </ul>
-        <p>
-          TriLemma started as the Jason & Brandon Duo in 2021 and evolved into a hard hitting trio with the addition of drummer Adam Park. 
-          Today, the band blends original music with a wide-ranging set of covers—from the soulful grit of The Red Clay Strays to the 
-          high-energy hits of Nelly—all delivered with a focus on connection, not just performance.
-          We don’t play at the crowd—we play with them. Every show is built to pull people in, whether that means a packed dance floor or 
-          a room locked into the moment.
-          TriLemma is currently writing new original music, with plans to enter the studio in 2026.
-        </p>
-        <p>
-          We are based in Saint Joseph, Missouri, and perform regularly at local venues and events. Whether you're looking for a night of dancing or just want to enjoy great music, TriLemma has something for everyone.
-        </p>
+      <div id="song-suggestion-modal" class="song-modal-overlay" hidden>
+        <div class="song-modal" role="dialog" aria-modal="true" aria-labelledby="song-modal-title">
+          <button
+            id="suggest-song-close"
+            class="song-modal-close"
+            type="button"
+            aria-label="Close song suggestion form"
+          >
+            ✕
+          </button>
+          <h2 id="song-modal-title">Suggest a Song</h2>
+          <p class="section-intro">Send us a tune you'd love to hear us play.</p>
 
-      </div>
-    </section>
+          <form
+            id="song-suggestion-form"
+            class="song-suggestion-form"
+            data-endpoint="https://script.google.com/macros/s/AKfycbw-Ffu2hRFPYRwXVosFBOOvw6c7G65GG_vYcEilJAtgD-kx0uvCgn9HeB9o9vb4Ef3aBA/exec"
+          >
+            <label for="song-title">Song Title (Required)</label>
+            <input id="song-title" name="song" type="text" maxlength="120" required />
 
-    <section id="shows" class="section alt">
-      <div class="container">
-        <h2>Upcoming Shows</h2>
-        <p class="section-intro">Catch us live around town:</p>
+            <label for="song-artist">Artist (Required)</label>
+            <input id="song-artist" name="artist" type="text" maxlength="120" required />
 
-        <!-- JS will inject show cards into this container -->
-        <div id="show-list" class="show-grid"></div>
-      </div>
-    </section>
+            <label for="song-link">Link (YouTube, Spotify, etc) (Optional)</label>
+            <input
+              id="song-link"
+              name="link"
+              type="url"
+              maxlength="500"
+              inputmode="url"
+              placeholder="https://"
+            />
 
-    <section id="music" class="section">
-      <div class="container">
-        <h2>Music</h2>
-        <p class="section-intro">Start here for featured tracks and full projects.</p>
+            <label for="song-comments">Comments (Optional)</label>
+            <textarea id="song-comments" name="comments" rows="3" maxlength="1000"></textarea>
 
-        <div class="show-grid">
-          <article class="show-card">
-            <h3>TriLemma</h3>
-            <p class="show-meta">For full-band sets and expanded material, check out TriLemma releases and live sessions.</p>
-            <ul class="media-links">
-              <li><a href="https://www.youtube.com/@TriLemmaMusic" target="_blank" rel="noopener noreferrer">TriLemma YouTube</a></li>
-            </ul>
-          </article>
+            <button id="song-suggestion-submit" class="btn btn-primary" type="submit">
+              Send Suggestion
+            </button>
+          </form>
+
+          <p
+            id="song-suggestion-status"
+            class="song-suggestion-status"
+            role="status"
+            aria-live="polite"
+          ></p>
         </div>
       </div>
-    </section>
 
+      <section id="about" class="section">
+        <div class="container">
+          <h2>About</h2>
+          <p class="band-intro">TriLemma is:</p>
+          <ul class="band-list" aria-label="Band members">
+            <li class="band-member">
+              <strong>Brandon O'Brien</strong>: Piano, Keys, Synths and Vocals
+            </li>
+            <li class="band-member"><strong>Jason Osborn</strong>: Guitar and Vocals</li>
+            <li class="band-member"><strong>Adam Park</strong>: Drums and Vocals</li>
+          </ul>
+          <p>
+            TriLemma started as the Jason & Brandon Duo in 2021 and evolved into a hard hitting trio
+            with the addition of drummer Adam Park. Today, the band blends original music with a
+            wide-ranging set of covers—from the soulful grit of The Red Clay Strays to the
+            high-energy hits of Nelly—all delivered with a focus on connection, not just
+            performance. We don’t play at the crowd—we play with them. Every show is built to pull
+            people in, whether that means a packed dance floor or a room locked into the moment.
+            TriLemma is currently writing new original music, with plans to enter the studio in
+            2026.
+          </p>
+          <p>
+            We are based in Saint Joseph, Missouri, and perform regularly at local venues and
+            events. Whether you're looking for a night of dancing or just want to enjoy great music,
+            TriLemma has something for everyone.
+          </p>
+        </div>
+      </section>
 
-    <section id="media" class="section alt">
-      <div class="container">
-        <h2>Releases (Coming Soon!)</h2>
-        <p class="section-intro">We are working on new releases and will share them here soon. Stay tuned for updates!</p>
-      </div>
-    </section>
+      <section id="shows" class="section alt">
+        <div class="container">
+          <h2>Upcoming Shows</h2>
+          <p class="section-intro">Catch us live around town:</p>
 
-    <section id="socials" class="section">
-      <div class="container">
-        <h2>Socials</h2>
-        <p>
-          Find us on these social media outlets!
-        </p>
-        <div class="show-grid">
-          <ul class="media-links">
-            <li><a href="https://www.facebook.com/profile.php?id=61567551685577" target="_blank" rel="noopener noreferrer">TriLemma Facebook</a></li>
+          <!-- JS will inject show cards into this container -->
+          <div id="show-list" class="show-grid show-grid--shows"></div>
+        </div>
+      </section>
+
+      <section id="music" class="section">
+        <div class="container">
+          <h2>Music</h2>
+          <p class="section-intro">Start here for featured tracks and full projects.</p>
+
+          <div class="show-grid">
+            <article class="show-card">
+              <h3>TriLemma</h3>
+              <p class="show-meta">
+                For full-band sets and expanded material, check out TriLemma releases and live
+                sessions.
+              </p>
+              <ul class="media-links">
+                <li>
+                  <a
+                    href="https://www.youtube.com/@TriLemmaMusic"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >TriLemma YouTube</a
+                  >
+                </li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="media" class="section alt">
+        <div class="container">
+          <h2>Releases (Coming Soon!)</h2>
+          <p class="section-intro">
+            We are working on new releases and will share them here soon. Stay tuned for updates!
+          </p>
+        </div>
+      </section>
+
+      <section id="socials" class="section">
+        <div class="container">
+          <h2>Socials</h2>
+          <p>Find us on these social media outlets!</p>
+          <div class="show-grid">
+            <ul class="media-links">
+              <li>
+                <a
+                  href="https://www.facebook.com/profile.php?id=61567551685577"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >TriLemma Facebook</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="section alt">
+        <div class="container narrow">
+          <h2>Contact & Booking</h2>
+          <p>
+            For venue bookings, private events, or collaborations, email us at
+            <a href="mailto:josborn777@gmail.com">josborn777@gmail.com</a>.
+          </p>
+          <p class="section-intro">Helpful details for booking inquiries:</p>
+          <ul class="link-list booking-list">
+            <li>Set lengths: Flexible (single set, multi-set, or event-specific)</li>
+            <li>Coverage area: Saint Joseph and surrounding regions</li>
+            <li>Typical response time: Within 24–48 hours</li>
           </ul>
         </div>
-      </div>
-    </section>
+      </section>
+    </main>
 
-    <section id="contact" class="section alt">
-      <div class="container narrow">
-        <h2>Contact & Booking</h2>
-        <p>
-          For venue bookings, private events, or collaborations, email us at
-          <a href="mailto:josborn777@gmail.com">josborn777@gmail.com</a>.
-        </p>
-        <p class="section-intro">Helpful details for booking inquiries:</p>
-        <ul class="link-list booking-list">
-          <li>Set lengths: Flexible (single set, multi-set, or event-specific)</li>
-          <li>Coverage area: Saint Joseph and surrounding regions</li>
-          <li>Typical response time: Within 24–48 hours</li>
-        </ul>
-      </div>
-    </section>
-  </main>
+    <footer id="site-footer" class="site-footer"></footer>
 
-  <footer id="site-footer" class="site-footer"></footer>
-
-  <script type="module" src="script.js"></script>
-</body>
+    <script type="module" src="script.js"></script>
+  </body>
 </html>

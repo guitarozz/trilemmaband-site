@@ -1,10 +1,5 @@
-import {
-  fetchJson,
-  MESSAGES,
-  mountSiteChrome,
-  PATHS,
-  setFooterYear,
-} from "./shared.js";
+import { fetchJson, MESSAGES, mountSiteChrome, PATHS, setFooterYear } from "./shared.js";
+import { initSongSuggestions } from "./song-suggestions.js";
 
 // Find the container in HTML where show cards should go
 const showListElement = document.getElementById("show-list");
@@ -12,8 +7,8 @@ const showListElement = document.getElementById("show-list");
 function createMetaRow(label, value) {
   const row = document.createElement("p");
   row.className = "show-meta";
-  
-  if (label){
+
+  if (label) {
     const strong = document.createElement("strong");
     strong.textContent = `${label}: `;
     row.appendChild(strong);
@@ -96,3 +91,4 @@ mountSiteChrome({ page: "home", showBuiltWith: true });
 setFooterYear();
 
 loadShows();
+initSongSuggestions();

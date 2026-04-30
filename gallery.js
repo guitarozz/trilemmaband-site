@@ -1,10 +1,4 @@
-import {
-  fetchJson,
-  MESSAGES,
-  mountSiteChrome,
-  PATHS,
-  setFooterYear,
-} from "./shared.js";
+import { fetchJson, MESSAGES, mountSiteChrome, PATHS, setFooterYear } from "./shared.js";
 
 const galleryGrid = document.getElementById("gallery-grid");
 

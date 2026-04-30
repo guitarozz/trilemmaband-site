@@ -1,0 +1,132 @@
+:root {
+  /* Core palette */
+  --bg: #0f172a;
+  --bg-deep: #0b1220;
+  --bg-deeper: #020617;
+  --surface: #111827;
+  --surface-alt: #1f2937;
+  --text: #e5e7eb;
+  --muted: #9ca3af;
+  --accent: #22c55e;
+  --accent-dark: #16a34a;
+
+  /* Semantic color tokens */
+  --brand-on-accent: #052e16;
+  --text-strong: #ffffff;
+  --text-inverse: #111827;
+  --outline-focus: var(--accent);
+  --skip-link-bg: #ffffff;
+  --hover-surface: rgba(156, 163, 175, 0.15);
+  --header-bg: rgba(15, 23, 42, 0.92);
+  --header-divider: rgba(156, 163, 175, 0.2);
+  --section-alt-bg: rgba(31, 41, 55, 0.4);
+  --section-divider: rgba(156, 163, 175, 0.15);
+  --shadow-elevated: 0 6px 20px rgba(0, 0, 0, 0.25);
+  --status-error: #fca5a5;
+  --status-success: #86efac;
+  --status-info: #93c5fd;
+  --overlay: rgba(2, 6, 23, 0.88);
+  --border-soft: rgba(156, 163, 175, 0.2);
+  --border-medium: rgba(156, 163, 175, 0.3);
+  --border-strong: rgba(156, 163, 175, 0.45);
+  --control-border: rgba(156, 163, 175, 0.5);
+  --panel-bg: rgba(15, 23, 42, 0.8);
+  --control-bg: rgba(31, 41, 55, 0.85);
+
+  /* Radius scale */
+  --radius-xs: 0.35rem;
+  --radius-sm: 0.4rem;
+  --radius-md: 0.45rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.6rem;
+  --radius-2xl: 0.75rem;
+  --radius-3xl: 0.8rem;
+
+  /* Semantic radius tokens */
+  --radius-focus: var(--radius-xs);
+  --radius-skip-link: var(--radius-sm);
+  --radius-control: var(--radius-xl);
+  --radius-chip: var(--radius-md);
+  --radius-field: var(--radius-lg);
+  --radius-media: var(--radius-sm);
+  --radius-card: var(--radius-3xl);
+  --radius-dialog: var(--radius-3xl);
+  --radius-hero-media: var(--radius-2xl);
+
+  --max-width: 980px;
+}
+
+/* Basic reset */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+main section {
+  scroll-margin-top: 5.5rem;
+}
+
+body {
+  margin: 0;
+  font-family:
+    Inter,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    sans-serif;
+  line-height: 1.6;
+  color: var(--text);
+  background: linear-gradient(180deg, var(--bg-deep) 0%, var(--bg) 100%);
+}
+
+body.modal-open {
+  overflow: hidden;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a:focus-visible,
+.btn:focus-visible {
+  outline: 3px solid var(--outline-focus);
+  outline-offset: 3px;
+  border-radius: var(--radius-focus);
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -3rem;
+  z-index: 999;
+  background: var(--skip-link-bg);
+  color: var(--text-inverse);
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--radius-skip-link);
+  font-weight: 700;
+  box-shadow: var(--shadow-elevated);
+}
+
+.skip-link:focus {
+  top: 0.8rem;
+}
+
+h1,
+h2 {
+  line-height: 1.2;
+  margin-top: 0;
+}
+
+h1 {
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  max-width: 20ch;
+}
