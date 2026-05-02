@@ -21,7 +21,7 @@ function createMetaRow(label, value) {
 function createShowCard(show) {
   const venue = show.venue || "Venue TBA";
   const date = show.date || "Date TBA";
-  const location = show.location || "Location TBA";
+  const location = show.location || "Location will be announced later";
 
   const card = document.createElement("article");
   card.className = "show-card";
