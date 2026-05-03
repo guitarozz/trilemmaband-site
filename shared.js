@@ -3,7 +3,6 @@ const NAV_ITEMS = [
   { key: "shows", label: "Shows", href: "index.html#shows" },
   { key: "music", label: "Music", href: "index.html#music" },
   { key: "socials", label: "Socials", href: "index.html#socials" },
-  { key: "contact", label: "Contact", href: "index.html#contact" },
   { key: "gallery", label: "Gallery", href: "gallery.html" },
 ];
 

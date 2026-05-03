@@ -48,7 +48,15 @@
               </p>
               <div class="hero-actions">
                 <a class="btn btn-primary" href="#shows">See Upcoming Shows</a>
-                <a class="btn btn-secondary" href="#contact">Book TriLemma</a>
+                <button
+                  id="book-trilemma-open"
+                  class="btn btn-secondary"
+                  type="button"
+                  aria-haspopup="dialog"
+                  aria-controls="booking-modal"
+                >
+                  Book TriLemma
+                </button>
                 <button
                   id="suggest-song-open"
                   class="btn btn-secondary"
@@ -112,6 +120,63 @@
             role="status"
             aria-live="polite"
           ></p>
+        </div>
+      </div>
+
+      <div id="booking-modal" class="song-modal-overlay" hidden>
+        <div class="song-modal" role="dialog" aria-modal="true" aria-labelledby="booking-modal-title">
+          <button
+            id="booking-modal-close"
+            class="song-modal-close"
+            type="button"
+            aria-label="Close booking form"
+          >
+            ✕
+          </button>
+          <h2 id="booking-modal-title">Book TriLemma</h2>
+          <p class="section-intro">Tell us about your event and we’ll get back to you.</p>
+
+          <form
+            id="booking-form"
+            class="song-suggestion-form"
+            data-endpoint="https://formsubmit.co/ajax/a634a68efba3407795c5ff6ef1d67098"
+          >
+            <input type="hidden" name="_subject" value="New TriLemma Booking Inquiry" />
+            <input type="hidden" name="_captcha" value="false" />
+
+            <label for="booking-name">Your Name</label>
+            <input id="booking-name" name="name" type="text" maxlength="120" required />
+
+            <label for="booking-email">Email</label>
+            <input id="booking-email" name="email" type="email" maxlength="180" required />
+
+            <label for="booking-phone">Phone (Optional)</label>
+            <input id="booking-phone" name="phone" type="tel" maxlength="40" />
+
+            <label for="booking-date">Event Date (Optional)</label>
+            <input
+              id="booking-date"
+              name="event_date"
+              type="text"
+              inputmode="text"
+              maxlength="60"
+              autocomplete="off"
+            />
+
+            <label for="booking-details">Event Details</label>
+            <textarea id="booking-details" name="message" rows="4" maxlength="1500" required></textarea>
+
+            <button id="booking-submit" class="btn btn-primary" type="submit">Send Booking Request</button>
+          </form>
+
+          <p id="booking-status" class="song-suggestion-status" role="status" aria-live="polite"></p>
+
+          <p class="section-intro">Helpful details for booking inquiries:</p>
+          <ul class="link-list booking-list">
+            <li>Set lengths: Flexible (single set, multi-set, or event-specific)</li>
+            <li>Coverage area: Saint Joseph and surrounding regions</li>
+            <li>Typical response time: Within 24–48 hours</li>
+          </ul>
         </div>
       </div>
 
@@ -209,21 +274,6 @@
         </div>
       </section>
 
-      <section id="contact" class="section alt">
-        <div class="container narrow">
-          <h2>Contact & Booking</h2>
-          <p>
-            For venue bookings, private events, or collaborations, email us at
-            <a href="mailto:josborn777@gmail.com">josborn777@gmail.com</a>.
-          </p>
-          <p class="section-intro">Helpful details for booking inquiries:</p>
-          <ul class="link-list booking-list">
-            <li>Set lengths: Flexible (single set, multi-set, or event-specific)</li>
-            <li>Coverage area: Saint Joseph and surrounding regions</li>
-            <li>Typical response time: Within 24–48 hours</li>
-          </ul>
-        </div>
-      </section>
     </main>
 
     <footer id="site-footer" class="site-footer"></footer>

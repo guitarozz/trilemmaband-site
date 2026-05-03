@@ -66,6 +66,17 @@
   font: inherit;
 }
 
+.song-suggestion-form input:-webkit-autofill,
+.song-suggestion-form input:-webkit-autofill:hover,
+.song-suggestion-form input:-webkit-autofill:focus,
+.song-suggestion-form textarea:-webkit-autofill,
+.song-suggestion-form textarea:-webkit-autofill:hover,
+.song-suggestion-form textarea:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--text);
+  box-shadow: 0 0 0 1000px var(--panel-bg) inset;
+  transition: background-color 9999s ease-in-out 0s;
+}
+
 .song-suggestion-form input:focus-visible,
 .song-suggestion-form textarea:focus-visible {
   outline: 3px solid var(--accent);
