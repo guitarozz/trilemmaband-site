@@ -1,6 +1,9 @@
 import { fetchJson, MESSAGES, mountSiteChrome, PATHS, setFooterYear } from "./shared.js";
 import { initSongSuggestions } from "./song-suggestions.js";
 
+const BOOKING_ENDPOINT =
+  "https://n54gzfle19.execute-api.us-east-1.amazonaws.com/default/trilemma-booking-handler";
+
 // Find the container in HTML where show cards should go
 const showListElement = document.getElementById("show-list");
 
@@ -189,13 +192,14 @@ function initBookingForm() {
       return;
     }
 
-    const endpoint = bookingForm.dataset.endpoint?.trim();
+    const endpoint = BOOKING_ENDPOINT;
     if (!endpoint) {
       setBookingStatus("Booking is temporarily unavailable. Please try again later.", "error");
       return;
     }
 
     const formData = new FormData(bookingForm);
+    const payload = Object.fromEntries(formData.entries());
 
     if (bookingSubmit instanceof HTMLButtonElement) bookingSubmit.disabled = true;
     setBookingStatus("Sending your booking request...", "pending");
@@ -203,8 +207,11 @@ function initBookingForm() {
     try {
       const response = await fetch(endpoint, {
         method: "POST",
-        headers: { Accept: "application/json" },
-        body: formData,
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
       });
 
       if (!response.ok) throw new Error(`Booking submit failed (${response.status})`);

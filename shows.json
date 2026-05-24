@@ -1,9 +1,4 @@
-[  {
-    "venue": "Cafe Acoustic Concert Hall",
-    "date": "May 23rd, 2026, 8pm",
-    "location": "1918 Frederick, Saint Joseph, MO",
-    "link": "https://www.facebook.com/events/2469388803533934"
-  },
+[  
   {
     "venue": "Frog Hop Ballroom",
     "date": "May 29th, 2026, 7pm",
@@ -14,12 +9,6 @@
     "venue": "Juneteenth Family Festival & Vendor Fair",
     "date": "June 20th, 2026, 12pm",
     "location": "409 S 18th St, Saint Joseph, MO",
-    "link": null
-  },
-  {
-    "venue": "Private Party",
-    "date": "July 2nd, 2026",
-    "location": "Private Residence, St Joseph, MO",
     "link": null
   },
   {
@@ -38,12 +27,6 @@
   {
     "venue": "Jakes Steakhouse",
     "date": "July 31st, 2026, 7pm",
-    "location": "620 Edmond St, St Joseph, MO",
-    "link": null
-  },
-  {
-    "venue": "Private Event",
-    "date": "September 12th, 2026, 1pm",
     "location": "620 Edmond St, St Joseph, MO",
     "link": null
   }
