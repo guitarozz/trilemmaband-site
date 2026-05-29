@@ -29,5 +29,17 @@
     "date": "July 31st, 2026, 7pm",
     "location": "620 Edmond St, St Joseph, MO",
     "link": null
+  },
+  {
+    "venue": "Jeep'n and Jam'n",
+    "date": "August 29th, 2026",
+    "location": "Agency Community Center, Agency, MO",
+    "link": null
+  },
+  {
+    "venue": "Living History Day",
+    "date": "September 19th 2026",
+    "location": "King City, MO",
+    "link": null
   }
 ]

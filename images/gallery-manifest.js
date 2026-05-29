@@ -1,124 +1,244 @@
 window.GALLERY_MANIFEST = {
-  images: [
+  "images": [
     {
-      src: "images/group1.jpeg",
-      alt: "TriLemma photo - Group1",
-      caption: "Group1",
-      orientation: "landscape",
+      "src": "images/Cafe-5-23-20261.jpg",
+      "alt": "TriLemma photo - Cafe 5 23 20261",
+      "caption": "Cafe 5 23 20261",
+      "orientation": "landscape"
     },
     {
-      src: "images/group2.jpeg",
-      alt: "TriLemma photo - Group2",
-      caption: "Group2",
-      orientation: "landscape",
+      "src": "images/Cafe-5-23-202610.jpg",
+      "alt": "TriLemma photo - Cafe 5 23 202610",
+      "caption": "Cafe 5 23 202610",
+      "orientation": "portrait"
     },
     {
-      src: "images/IMG_1817.PNG",
-      alt: "TriLemma photo - Img 1817",
-      caption: "Img 1817",
-      orientation: "portrait",
+      "src": "images/Cafe-5-23-202611.jpg",
+      "alt": "TriLemma photo - Cafe 5 23 202611",
+      "caption": "Cafe 5 23 202611",
+      "orientation": "landscape"
     },
     {
-      src: "images/IMG_2099.JPG",
-      alt: "TriLemma photo - Img 2099",
-      caption: "Img 2099",
-      orientation: "portrait",
+      "src": "images/Cafe-5-23-202612.jpg",
+      "alt": "TriLemma photo - Cafe 5 23 202612",
+      "caption": "Cafe 5 23 202612",
+      "orientation": "portrait"
     },
     {
-      src: "images/IMG_2100.JPG",
-      alt: "TriLemma photo - Img 2100",
-      caption: "Img 2100",
-      orientation: "portrait",
+      "src": "images/Cafe-5-23-202613.jpg",
+      "alt": "TriLemma photo - Cafe 5 23 202613",
+      "caption": "Cafe 5 23 202613",
+      "orientation": "landscape"
     },
     {
-      src: "images/IMG_2104.JPG",
-      alt: "TriLemma photo - Img 2104",
-      caption: "Img 2104",
-      orientation: "portrait",
+      "src": "images/Cafe-5-23-202614.jpg",
+      "alt": "TriLemma photo - Cafe 5 23 202614",
+      "caption": "Cafe 5 23 202614",
+      "orientation": "portrait"
     },
     {
-      src: "images/IMG_2105.JPG",
-      alt: "TriLemma photo - Img 2105",
-      caption: "Img 2105",
-      orientation: "landscape",
+      "src": "images/Cafe-5-23-202615.jpg",
+      "alt": "TriLemma photo - Cafe 5 23 202615",
+      "caption": "Cafe 5 23 202615",
+      "orientation": "portrait"
     },
     {
-      src: "images/IMG_2107.JPG",
-      alt: "TriLemma photo - Img 2107",
-      caption: "Img 2107",
-      orientation: "landscape",
+      "src": "images/Cafe-5-23-202616.jpg",
+      "alt": "TriLemma photo - Cafe 5 23 202616",
+      "caption": "Cafe 5 23 202616",
+      "orientation": "landscape"
     },
     {
-      src: "images/IMG_2110.JPG",
-      alt: "TriLemma photo - Img 2110",
-      caption: "Img 2110",
-      orientation: "landscape",
+      "src": "images/Cafe-5-23-202617.jpg",
+      "alt": "TriLemma photo - Cafe 5 23 202617",
+      "caption": "Cafe 5 23 202617",
+      "orientation": "portrait"
     },
     {
-      src: "images/IMG_2112.JPG",
-      alt: "TriLemma photo - Img 2112",
-      caption: "Img 2112",
-      orientation: "landscape",
+      "src": "images/Cafe-5-23-202618.jpg",
+      "alt": "TriLemma photo - Cafe 5 23 202618",
+      "caption": "Cafe 5 23 202618",
+      "orientation": "portrait"
     },
     {
-      src: "images/IMG_2114.JPG",
-      alt: "TriLemma photo - Img 2114",
-      caption: "Img 2114",
-      orientation: "portrait",
+      "src": "images/Cafe-5-23-202619.jpg",
+      "alt": "TriLemma photo - Cafe 5 23 202619",
+      "caption": "Cafe 5 23 202619",
+      "orientation": "portrait"
     },
     {
-      src: "images/IMG_2117.JPG",
-      alt: "TriLemma photo - Img 2117",
-      caption: "Img 2117",
-      orientation: "portrait",
+      "src": "images/Cafe-5-23-20262.jpg",
+      "alt": "TriLemma photo - Cafe 5 23 20262",
+      "caption": "Cafe 5 23 20262",
+      "orientation": "portrait"
     },
     {
-      src: "images/IMG_2141.JPG",
-      alt: "TriLemma photo - Img 2141",
-      caption: "Img 2141",
-      orientation: "portrait",
+      "src": "images/Cafe-5-23-202620.jpg",
+      "alt": "TriLemma photo - Cafe 5 23 202620",
+      "caption": "Cafe 5 23 202620",
+      "orientation": "portrait"
     },
     {
-      src: "images/IMG_2142.JPG",
-      alt: "TriLemma photo - Img 2142",
-      caption: "Img 2142",
-      orientation: "portrait",
+      "src": "images/Cafe-5-23-20263.jpg",
+      "alt": "TriLemma photo - Cafe 5 23 20263",
+      "caption": "Cafe 5 23 20263",
+      "orientation": "landscape"
     },
     {
-      src: "images/IMG_2745.jpg",
-      alt: "TriLemma photo - Img 2745",
-      caption: "Img 2745",
-      orientation: "landscape",
+      "src": "images/Cafe-5-23-20264.jpg",
+      "alt": "TriLemma photo - Cafe 5 23 20264",
+      "caption": "Cafe 5 23 20264",
+      "orientation": "portrait"
     },
     {
-      src: "images/IMG_2748.jpg",
-      alt: "TriLemma photo - Img 2748",
-      caption: "Img 2748",
-      orientation: "landscape",
+      "src": "images/Cafe-5-23-20265.jpg",
+      "alt": "TriLemma photo - Cafe 5 23 20265",
+      "caption": "Cafe 5 23 20265",
+      "orientation": "landscape"
     },
     {
-      src: "images/IMG_2751.JPG",
-      alt: "TriLemma photo - Img 2751",
-      caption: "Img 2751",
-      orientation: "portrait",
+      "src": "images/Cafe-5-23-20266.jpg",
+      "alt": "TriLemma photo - Cafe 5 23 20266",
+      "caption": "Cafe 5 23 20266",
+      "orientation": "landscape"
     },
     {
-      src: "images/IMG_3793 Cindy B.jpeg",
-      alt: "TriLemma photo - Img 3793 Cindy B",
-      caption: "Img 3793 Cindy B",
-      orientation: "landscape",
+      "src": "images/Cafe-5-23-20267.jpg",
+      "alt": "TriLemma photo - Cafe 5 23 20267",
+      "caption": "Cafe 5 23 20267",
+      "orientation": "landscape"
     },
     {
-      src: "images/IMG_3837 Cindy B.jpeg",
-      alt: "TriLemma photo - Img 3837 Cindy B",
-      caption: "Img 3837 Cindy B",
-      orientation: "portrait",
+      "src": "images/Cafe-5-23-20268.jpg",
+      "alt": "TriLemma photo - Cafe 5 23 20268",
+      "caption": "Cafe 5 23 20268",
+      "orientation": "landscape"
     },
     {
-      src: "images/IMG_7037.jpeg",
-      alt: "TriLemma photo - Img 7037",
-      caption: "Img 7037",
-      orientation: "landscape",
+      "src": "images/Cafe-5-23-20269.jpg",
+      "alt": "TriLemma photo - Cafe 5 23 20269",
+      "caption": "Cafe 5 23 20269",
+      "orientation": "portrait"
     },
-  ],
+    {
+      "src": "images/group1.jpeg",
+      "alt": "TriLemma photo - Group1",
+      "caption": "Group1",
+      "orientation": "landscape"
+    },
+    {
+      "src": "images/group2.jpeg",
+      "alt": "TriLemma photo - Group2",
+      "caption": "Group2",
+      "orientation": "landscape"
+    },
+    {
+      "src": "images/IMG_1817.PNG",
+      "alt": "TriLemma photo - Img 1817",
+      "caption": "Img 1817",
+      "orientation": "portrait"
+    },
+    {
+      "src": "images/IMG_2099.JPG",
+      "alt": "TriLemma photo - Img 2099",
+      "caption": "Img 2099",
+      "orientation": "portrait"
+    },
+    {
+      "src": "images/IMG_2100.JPG",
+      "alt": "TriLemma photo - Img 2100",
+      "caption": "Img 2100",
+      "orientation": "portrait"
+    },
+    {
+      "src": "images/IMG_2104.JPG",
+      "alt": "TriLemma photo - Img 2104",
+      "caption": "Img 2104",
+      "orientation": "portrait"
+    },
+    {
+      "src": "images/IMG_2105.JPG",
+      "alt": "TriLemma photo - Img 2105",
+      "caption": "Img 2105",
+      "orientation": "landscape"
+    },
+    {
+      "src": "images/IMG_2107.JPG",
+      "alt": "TriLemma photo - Img 2107",
+      "caption": "Img 2107",
+      "orientation": "landscape"
+    },
+    {
+      "src": "images/IMG_2110.JPG",
+      "alt": "TriLemma photo - Img 2110",
+      "caption": "Img 2110",
+      "orientation": "landscape"
+    },
+    {
+      "src": "images/IMG_2112.JPG",
+      "alt": "TriLemma photo - Img 2112",
+      "caption": "Img 2112",
+      "orientation": "landscape"
+    },
+    {
+      "src": "images/IMG_2114.JPG",
+      "alt": "TriLemma photo - Img 2114",
+      "caption": "Img 2114",
+      "orientation": "portrait"
+    },
+    {
+      "src": "images/IMG_2117.JPG",
+      "alt": "TriLemma photo - Img 2117",
+      "caption": "Img 2117",
+      "orientation": "portrait"
+    },
+    {
+      "src": "images/IMG_2141.JPG",
+      "alt": "TriLemma photo - Img 2141",
+      "caption": "Img 2141",
+      "orientation": "portrait"
+    },
+    {
+      "src": "images/IMG_2142.JPG",
+      "alt": "TriLemma photo - Img 2142",
+      "caption": "Img 2142",
+      "orientation": "portrait"
+    },
+    {
+      "src": "images/IMG_2745.jpg",
+      "alt": "TriLemma photo - Img 2745",
+      "caption": "Img 2745",
+      "orientation": "landscape"
+    },
+    {
+      "src": "images/IMG_2748.jpg",
+      "alt": "TriLemma photo - Img 2748",
+      "caption": "Img 2748",
+      "orientation": "landscape"
+    },
+    {
+      "src": "images/IMG_2751.JPG",
+      "alt": "TriLemma photo - Img 2751",
+      "caption": "Img 2751",
+      "orientation": "portrait"
+    },
+    {
+      "src": "images/IMG_3793 Cindy B.jpeg",
+      "alt": "TriLemma photo - Img 3793 Cindy B",
+      "caption": "Img 3793 Cindy B",
+      "orientation": "landscape"
+    },
+    {
+      "src": "images/IMG_3837 Cindy B.jpeg",
+      "alt": "TriLemma photo - Img 3837 Cindy B",
+      "caption": "Img 3837 Cindy B",
+      "orientation": "portrait"
+    },
+    {
+      "src": "images/IMG_7037.jpeg",
+      "alt": "TriLemma photo - Img 7037",
+      "caption": "Img 7037",
+      "orientation": "landscape"
+    }
+  ]
 };
