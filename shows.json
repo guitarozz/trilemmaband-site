@@ -1,14 +1,20 @@
 [  
   {
-    "venue": "Jeep'n and Jam'n",
-    "date": "August 29th, 2026",
-    "location": "Agency Community Center, Agency, MO",
+    "venue": "River Bluffs Halloween Spooktacular!",
+    "date": "October 30th, 2026 7-10pm",
+    "location": "River Bluffs Brewery, St. Joseph, MO",
     "link": null
   },
   {
-    "venue": "Back to King City Night",
-    "date": "September 19th 2026",
-    "location": "King City, MO",
+    "venue": "Cafe Acoustic Concert Hall",
+    "date": "November 21st, 2026 8-11pm",
+    "location": "Cafe Acoustic, St. Joseph, MO",
+    "link": null
+  },
+  {
+    "venue": "Private Party",
+    "date": "December 18th, 2026",
+    "location": "",
     "link": null
   }
 ]
