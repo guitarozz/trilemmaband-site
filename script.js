@@ -24,6 +24,7 @@ function createMetaRow(label, value) {
 function createShowCard(show) {
   const venue = show.venue || "Venue TBA";
   const date = show.date || "Date TBA";
+  const hasLocation = show.location !== null && show.location !== undefined;
   const location = show.location || "Location TBA";
 
   const card = document.createElement("article");
@@ -34,7 +35,9 @@ function createShowCard(show) {
   card.appendChild(title);
 
   card.appendChild(createMetaRow(null, date));
-  card.appendChild(createMetaRow(null, location));
+  if (hasLocation) {
+    card.appendChild(createMetaRow(null, location));
+  }
   if (show.format) {
     card.appendChild(createMetaRow("Notes", show.format));
   }
@@ -185,7 +188,8 @@ function initBookingForm() {
 
     if (!bookingForm.checkValidity()) {
       setBookingStatus("Please fill in the required fields before submitting.", "error");
-      if (bookingName instanceof HTMLInputElement && !bookingName.value.trim()) markInvalid(bookingName);
+      if (bookingName instanceof HTMLInputElement && !bookingName.value.trim())
+        markInvalid(bookingName);
       if (bookingEmail instanceof HTMLInputElement && !bookingEmail.value.trim())
         markInvalid(bookingEmail);
       bookingForm.reportValidity();
